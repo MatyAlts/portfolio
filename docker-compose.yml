@@ -3,12 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - "80"
     restart: unless-stopped
-    environment:
-      - NODE_ENV=production
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.portfolio.rule=Host(`matyalts.me`)"
-      - "traefik.http.routers.portfolio.entrypoints=websecure"
-      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
-      - "traefik.http.services.portfolio.loadbalancer.server.port=80"
