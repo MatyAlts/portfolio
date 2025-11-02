@@ -39,7 +39,7 @@ const HeroText = memo(() => {
           >
             <FlipWords
               words={words}
-              duration={200}
+              duration={3000}
               className="font-black text-white text-8xl"
             />
           </motion.div>
@@ -84,7 +84,7 @@ const HeroText = memo(() => {
             <FlipWords
               words={words}
               className={"font-bold text-white text-7xl"}
-              duration={200}
+              duration={3000}
             />
           </motion.div>
 

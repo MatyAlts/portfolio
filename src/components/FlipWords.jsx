@@ -1,5 +1,4 @@
-"use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
 
@@ -9,27 +8,21 @@ export const FlipWords = ({
   className
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  // thanks for the fix Julian - https://github.com/Julian-AT
-  const startAnimation = useCallback(() => {
-    const word = words[words.indexOf(currentWord) + 1] || words[0];
-    setCurrentWord(word);
-    setIsAnimating(true);
-  }, [currentWord, words]);
 
   useEffect(() => {
-    if (!isAnimating)
-      setTimeout(() => {
-        startAnimation();
-      }, duration);
-  }, [isAnimating, duration, startAnimation]);
+    const interval = setInterval(() => {
+      setCurrentWord((prev) => {
+        const currentIndex = words.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % words.length;
+        return words[nextIndex];
+      });
+    }, duration);
+
+    return () => clearInterval(interval);
+  }, [words, duration]);
 
   return (
-    <AnimatePresence
-      onExitComplete={() => {
-        setIsAnimating(false);
-      }}>
+    <AnimatePresence mode="wait">
       <motion.div
         initial={{
           opacity: 0,
@@ -49,10 +42,9 @@ export const FlipWords = ({
           x: 30,
           filter: "blur(8px)",
           scale: 1.5,
-          position: "absolute",
         }}
         className={twMerge(
-          "z-10 inline-block relative text-left will-change-transform",
+          "z-10 inline-block text-left will-change-transform",
           className
         )}
         key={currentWord}
