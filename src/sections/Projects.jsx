@@ -7,11 +7,11 @@ const Projects = memo(function Projects() {
 
   const projects = [
     {
-      title: "Landing Page Estudio Jurídico Belmonte Salafia",
-      description: "Desarrollo responsivo y moderno con énfasis en experiencia de usuario, contacto directo y presentación profesional del equipo legal.",
-      detailedDescription: `El proyecto belmontesalafia.com consiste en el desarrollo integral del sitio web institucional del Estudio Jurídico Belmonte – Salafia, con sede en Mendoza, Argentina.
+      title: "Landing Page Belmonte Salafia Law Firm",
+      description: "A modern, responsive platform designed to present legal services, generate client leads, and reflect the firm’s professionalism and values.",
+      detailedDescription: `The belmontesalafia.com project consists of the full development of the official website for the Belmonte – Salafia Law Firm, based in Mendoza, Argentina.
 
-El objetivo principal fue transmitir confianza, profesionalismo y accesibilidad, ofreciendo a los clientes una plataforma moderna y funcional para conocer los servicios legales del estudio y establecer contacto directo con sus profesionales.`,
+The main objective was to build a digital presence that conveys trust, professionalism, and accessibility, offering clients a clean and intuitive platform to explore the firm’s legal services and contact its professionals easily.`,
       technologies: ["typescript", "react", "tailwindcss", "java", "n8n", "postgresql"],
       image: "/assets/projects/belmontesalafia.png",
       mobileImage: "/assets/projects/belmontesalafia_mobile.png",
